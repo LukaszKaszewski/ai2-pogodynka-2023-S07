@@ -20,7 +20,5 @@
 ###< symfony/phpunit-bridge ###
 
 ### IDE conf ###
-.idea/workspace.xml
-.idea/php.xml
-.idea/modules.xml
+.idea
 ### IDE conf ###
