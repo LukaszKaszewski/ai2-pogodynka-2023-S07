@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class WeatherController extends AbstractController
 {
+//    comment to end of file
     #[Route('/weather/{id}', name: 'app_weather', requirements: ['id' => '\d+'])]
     #[Route('/weather/{city}/{country?PL}', name: 'app_weather_city')]
 //    public function city (int $id):Response
