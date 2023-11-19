@@ -1,0 +1,8 @@
+App\Entity\Measurement:
+  properties:
+    temperature:
+      - NotBlank:
+          groups: ['create', 'edit']
+      - Range:
+          min: -273.15
+          groups: ['create', 'edit']
