@@ -9,7 +9,6 @@ security:
             entity:
                 class: App\Entity\User
                 property: username
-#                            - 'ROLE_LOCATION_INDEX'
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -20,6 +19,12 @@ security:
             form_login:
                 login_path: app_login
                 check_path: app_login
+#                target_path_parameter: app_weather_index/1
+            logout:
+                path: app_logout
+#                target: app_weather_index/1
+                # where to redirect after logout
+                # target: app_any_route
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -33,6 +38,27 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/, roles: PUBLIC_ACCESS }
+    role_hierarchy:
+        ROLE_ADMIN:
+            - ROLE_USER
+            - ROLE_LOCATION_NEW
+            - ROLE_LOCATION_EDIT
+            - ROLE_LOCATION_DELETE
+            - ROLE_MEASUREMENT_NEW
+            - ROLE_MEASUREMENT_EDIT
+            - ROLE_MEASUREMENT_DELETE
+
+        ROLE_USER:
+            - ROLE_LOCATION_INDEX
+            - ROLE_LOCATION_SHOW
+            - ROLE_MEASUREMENT_INDEX
+            - ROLE_MEASUREMENT_SHOW
+
+        ROLE_USER_CREATE:
+            - ROLE_LOCATION_INDEX
+            - ROLE_LOCATION_NEW
+            - ROLE_MEASUREMENT_INDEX
+            - ROLE_MEASUREMENT_NEW
 
 when@test:
     security:
